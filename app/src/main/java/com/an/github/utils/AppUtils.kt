@@ -19,7 +19,7 @@ class AppUtils {
             startCalendar.set(Calendar.MILLISECOND, 0)
             val date = startCalendar.time
 
-            val df = SimpleDateFormat("YYYY-MM-dd")
+            val df = SimpleDateFormat("yyyy-MM-dd")
             return df.format(date)
         }
 
