@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Github-Sample</string>
+
+    <string name="text_stars">Stars <font color='000000'>%1$s</font></string>
+    <string name="text_forks">Forks <font color='000000'>%1$s</font></string>
+    <string name="text_issues">Issues <font color='000000'>%1$s</font></string>
+    <string name="text_url">Url: %1$s</string>
+    <string name="text_downloads">Download Url: %1$s</string>
+    <string name="text_empty">Nothing to display right now.\n\nPlease try again</string>
+
+
+    <string name="transition_name">transition_repo</string>
+    <string name="transition_desc">transition_desc</string>
+    <string name="transition_owner">transition_owner</string>
+
+</resources>

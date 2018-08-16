@@ -1,0 +1,177 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data class="GithubDetailActivityBinding">
+
+        <variable
+            name="repository"
+            type="com.an.github.model.Repository" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding">
+
+
+        <ImageView
+            android:id="@+id/repo_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:gravity="center_horizontal"
+            android:text="@{repository.fullName}"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="@dimen/font_medium_large"
+            android:transitionName="@string/transition_name"
+            app:fontFamily="@font/gt_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/repo_image" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_user_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:text="@{repository.owner.login}"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_xsmall"
+            android:transitionName="@string/transition_owner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_title" />
+
+        <!--<androidx.appcompat.widget.AppCompatTextView-->
+        <!--android:id="@+id/item_date"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginRight="@dimen/margin_small"-->
+        <!--android:text="22nd May 2018"-->
+        <!--android:textColor="@android:color/holo_orange_light"-->
+        <!--android:textSize="@dimen/font_xsmall"-->
+        <!--app:layout_constraintLeft_toRightOf="@+id/item_user_name"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintHorizontal_weight="3"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/item_title"/>-->
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_stars"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:drawableLeft="@drawable/ic_star_black_24dp"
+            android:drawablePadding="@dimen/padding_small"
+            android:text="@{@string/text_stars(repository.stargazersCount)}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/font_xmedium"
+            app:fontFamily="@font/gt_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/item_forks"
+            app:layout_constraintTop_toBottomOf="@id/item_user_name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_forks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:drawableLeft="@drawable/ic_fork_grey_24"
+            android:drawablePadding="@dimen/padding_small"
+            android:text="@{@string/text_forks(repository.forks)}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/font_xmedium"
+            app:fontFamily="@font/gt_medium"
+            app:layout_constraintLeft_toRightOf="@+id/item_stars"
+            app:layout_constraintRight_toLeftOf="@+id/item_issues"
+            app:layout_constraintTop_toBottomOf="@id/item_user_name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_issues"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:drawableLeft="@drawable/ic_info_outline_black_24dp"
+            android:drawablePadding="@dimen/padding_small"
+            android:text="@{@string/text_issues(repository.openIssues)}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/font_xmedium"
+            app:fontFamily="@font/gt_medium"
+            app:layout_constraintLeft_toRightOf="@+id/item_forks"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_user_name" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@{repository.description}"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/font_medium"
+            android:transitionName="@string/transition_desc"
+            app:fontFamily="@font/gt_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_stars" />
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@{@string/text_url(repository.url)}"
+            android:autoLink="web"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_small"
+            app:fontFamily="@font/montserrat_regular"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_desc" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/item_downloads_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin"
+            android:text="@{@string/text_downloads(repository.downloadsUrl)}"
+            android:autoLink="web"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/font_small"
+            app:fontFamily="@font/montserrat_regular"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_url" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
